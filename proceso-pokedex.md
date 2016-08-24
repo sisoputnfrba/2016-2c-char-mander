@@ -8,7 +8,7 @@ Al ser el PokeDex un filesystem distribuído, este componente estará compuesto 
 
 ## Servidor PokeDex
 
-Este proceso gestionará un Filesystem en formato Otro Sistema Académico de Archivos (OSADA) (ver Anexo I - Otro Sistema Académico de Archivos) almacenado en un archivo binario y se lo presentará a los diversos procesos PokeDex Cliente que se conecten.
+Este proceso gestionará un Filesystem en formato Otro Sistema Académico de Archivos (OSADA) (ver [Anexo I - Otro Sistema Académico de Archivos](anexo-i---otro-sistema-académico-de-archivos-osada.md)) almacenado en un archivo binario y se lo presentará a los diversos procesos PokeDex Cliente que se conecten.
 
 La implementación deberá permitir que se pueda:
 

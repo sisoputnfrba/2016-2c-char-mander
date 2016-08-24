@@ -48,7 +48,7 @@ El Pokémon perdedor de la batalla, enfrentará en un Encuentro al Pokémon del 
 > Entrenadores ordenados según tiempo de ingreso:
 >
 > &nbsp;
-> 
+>
 > Entrenador 1: Pikachu Nivel 10
 >
 > Entrenador 2: Squirtle Nivel 5
@@ -65,7 +65,7 @@ El Pokémon perdedor de la batalla, enfrentará en un Encuentro al Pokémon del 
 >
 > => El Entrenador 2 será elegido como víctima.
 
-Para simplificar el algoritmo de batalla Pokémon, **la cátedra proveerá una biblioteca[^5] para la realización del Encuentro entre 2 Pokémons** y evitar el cálculo innecesario de los factores de efectividad de los ataques. Un ejemplo práctico de aplicación de la misma se detalla en el Anexo III - Algoritmo de Batalla.
+Para simplificar el algoritmo de batalla Pokémon, **la cátedra proveerá una biblioteca[^5] para la realización del Encuentro entre 2 Pokémons** y evitar el cálculo innecesario de los factores de efectividad de los ataques. Un ejemplo práctico de aplicación de la misma se detalla en el [Anexo III - Algoritmo de Batalla](anexo-iii---algoritmo-de-batalla.md).
 
 ## Atrapar un Pokémon
 
@@ -75,7 +75,7 @@ Cuando un entrenador atrapa un Pokémon, copiará como prueba de dicha operació
 
 ## Dibujado del Mapa
 
-Para mostrar el mapa, **la cátedra proveerá una biblioteca encargada de dibujar en pantalla el Mapa, los Entrenadores y las PokeNests**. La misma se encuentra descrita en el Anexo II - Interfaz Gráfica.
+Para mostrar el mapa, **la cátedra proveerá una biblioteca encargada de dibujar en pantalla el Mapa, los Entrenadores y las PokeNests**. La misma se encuentra descrita en el [Anexo II - Interfaz Gráfica](anexo-ii---interfaz-gráfica.md).
 
 ## Archivos y directorios del Mapa
 
@@ -157,7 +157,7 @@ Nivel=33
 * No hay una cantidad definida de PokeNests. El proceso Mapa al iniciar debe recorrer el árbol y crear las instancias correspondientes.
 * No se instanciarán dos Mapas con el mismo nombre en el sistema.
 * Las PokeNests deberán estar dentro de los márgenes del Nivel y no podrán superponerse.
-* Los archivos necesarios para ejecutar una simulación serán provistos siempre en su totalidad y sin errores de sintaxis o semántica. Es correcto considerar un error abortivo la carencia o error de alguno de ellos. 
+* Los archivos necesarios para ejecutar una simulación serán provistos siempre en su totalidad y sin errores de sintaxis o semántica. Es correcto considerar un error abortivo la carencia o error de alguno de ellos.
 
 ---
 [^2] Shortest Remaining Distance First - Algoritmo no-expropiativo de planificación que define que el próximo personaje a ser planificado es aquel cuya distancia total al siguiente recurso es más corta. (Algoritmo inventado para el trabajo práctico)
