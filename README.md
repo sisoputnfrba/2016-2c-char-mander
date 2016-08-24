@@ -1,6 +1,8 @@
+# char *mander
+
 ![char *mander](/assets/image03.png)
 
-# Introducción
+## Introducción
 
 El trabajo práctico de este cuatrimestre consiste en desarrollar un sistema distribuido, que mediante la metáfora pretende simular algunos aspectos de un Sistema Operativo y mostrar aspectos internos de la interacción entre los mismos.
 
