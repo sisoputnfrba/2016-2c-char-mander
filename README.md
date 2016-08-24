@@ -22,3 +22,9 @@ El trabajo práctico está diseñado para que el alumno pueda mediante la ejerci
 - Experimentar la problemática inherente a la concurrencia y su solución mediante la sincronización
 
 - Comprender la importancia de una norma o protocolo estándar en la comunicación entre procesos
+
+## Evaluación del Trabajo Práctico
+
+Para evaluar este trabajo se le proveerá al grupo diversos escenarios de simulación y se validará el correcto desempeño del sistema ante los casos planteados, pudiendo también el grupo desarrollar sus propios casos para realizar sus pruebas previas a la presentación.
+
+Se proveerá también durante el transcurso del cuatrimestre archivos de datos con valores de ejemplo y los resultados esperados.
