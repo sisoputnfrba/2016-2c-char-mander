@@ -33,6 +33,6 @@ La cátedra implementó dicho algoritmo en una biblioteca compartida, que ademá
 
 Dicha biblioteca, junto con un programa de ejemplo, se encuentran en el siguiente repositorio:
 
-> https://github.com/sisoputnfrba/so-nivel-pkmn-utils.git
+> https://github.com/sisoputnfrba/so-pkmn-utils.git
 
 También se provee un breve tutorial en la wiki de dicho repositorio.
