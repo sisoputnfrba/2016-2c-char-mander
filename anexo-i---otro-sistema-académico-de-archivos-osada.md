@@ -35,7 +35,7 @@ El encabezado del sistema de archivos estará almacenado en el primer bloque. Co
 
 | Campo | Tamaño | Valor |
 |-------|--------|-------|
-| Identificador | 7 bytes | `OsadaFS` (sin `\n`) |
+| Identificador | 7 bytes | `OsadaFS` (sin `\0`) |
 | Versión | 1 byte | 1 |
 | Tamaño del FS [bloques] | 4 bytes | T / BLOCK_SIZE |
 | Tamaño del Bitmap [bloques] | 4 bytes | N: Tamaño del FS [bloques] / 8 / BLOCK_SIZE |
