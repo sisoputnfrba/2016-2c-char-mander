@@ -6,13 +6,13 @@ Para lograrlo, será indispensable el uso de estructuras que reflejen qué Entre
 
 Los diversos Entrenadores ingresarán al mapa en busca de determinados Pokémons, los cuales se encuentran en las diversas PokeNest. El Entrenador solicitará la ubicación de la PokeNest que tiene el Pokémon que está buscando y se dirigirá al mismo. Al llegar, solicitará una instancia del Pokémon al Mapa el cual le será otorgado siempre y cuando hubiera disponibles. Cada PokeNest tendrá Pokémons de una única especie.
 
-El Mapa tendrá un único punto de acceso por socket y, luego de realizar un intercambio de mensajes inicial (_handshake_), delegará cada conexión a un hilo responsable.
+El Mapa tendrá un único punto de acceso por socket y, luego de realizar un intercambio de mensajes inicial (_handshake_), delegará cada conexión al hilo responsable.
 
 El proceso Mapa al ser ejecutado **obtendrá de la línea de comandos su nombre y la ruta del Pokédex**. En el directorio `/Mapas` del Pokédex existirá un subdirectorio con el nombre de cada Mapa, por lo que **el proceso deberá leer su archivo de metadata y los diversos subdirectorios dentro del directorio PokeNests para así poder conocer los recursos que tiene disponibles y crearlos**.
 
 ## Hilo Planificador
 
-Cada hilo Planificador será el encargado de habilitar a los procesos Entrenadores para que puedan actuar dentro del Mapa, ordenándolos **según un algoritmo de planificación de corto plazo Round Robin o SRDF**[^2].
+El hilo Planificador será el encargado de habilitar a los procesos Entrenadores para que puedan actuar dentro del Mapa, ordenándolos **según un algoritmo de planificación de corto plazo Round Robin o SRDF**[^2].
 
 Gestionará una cola de Listos y una cola de Bloqueados. Ante cada modificación de estas colas, el Planificador **deberá informar por archivo de log la modificación realizada, y la lista de los Entrenadores en cada una de las colas**.
 
