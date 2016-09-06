@@ -40,6 +40,7 @@ A modo de guía para los alumnos se proponen una serie de puntos de control, cad
 #### Recursos necesarios
 * SO FUSE Example - [Link](https://github.com/sisoputnfrba/so-fuse_example)
 * Guia de FUSE por Joseph J. Pfeiffer (en inglés) - [Link](http://www.cs.nmsu.edu/~pfeiffer/fuse-tutorial/)
+* Traducción de la Guía de FUSE de Joseph J. Pfeiffer, por Matías García Isaia - [Link](https://github.com/mgarciaisaia/escribiendo-un-filesystem-fuse/)
 * Linux POSIX Threads (pthread) - [Link](http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html)
 * Gcc, Makefile - [Link parte 1](https://youtu.be/DIY8O0vayUo) y [Link parte 2](https://youtu.be/C93u4HpZ5qI)
 
