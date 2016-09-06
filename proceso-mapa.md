@@ -148,7 +148,7 @@ Identificador=P
     * `/Mapas/Ciudad Paleta/PokeNests/Bulbasaur/Bulbasaur001.dat`
 * **Contenido**:
     * Nivel del Pokemon
-    * Imagen del POkemon en Ascii Art
+    * Imagen del Pokemon en Ascii Art
 * **Ejemplo de Contenido**:
 ```
 Nivel=33
