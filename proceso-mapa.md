@@ -146,6 +146,9 @@ Identificador=P
     * `/Mapas/Ciudad Paleta/PokeNests/Pikachu/Pikachu001.dat`
     * `/Mapas/Ciudad Paleta/PokeNests/Pikachu/Pikachu002.dat`
     * `/Mapas/Ciudad Paleta/PokeNests/Bulbasaur/Bulbasaur001.dat`
+* **Contenido**:
+    * Nivel del Pokemon
+    * Imagen del POkemon en Ascii Art
 * **Ejemplo de Contenido**:
 ```
 Nivel=33
