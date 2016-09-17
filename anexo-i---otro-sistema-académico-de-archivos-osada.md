@@ -82,11 +82,7 @@ También a modo de ejemplo, si se nos indicara que un archivo empieza en el bloq
 
 Ejemplo:
 
-| | | `FFFFFFFF` | | `2` |
-|-|-|-|-|-|
-| | | | `12` | |
-| | | `13` | `15` | |
-| `FFFFFFFF` | | `4` | | |
+![Ejemplo de Tabla de Asignaciones](assets/tabla-asignaciones.png)
 
 ## Osada Utils - Herramientas y estructuras
 
