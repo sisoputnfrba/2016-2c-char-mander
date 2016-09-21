@@ -10,13 +10,15 @@ El proceso Entrenador obtendrá de la línea de comandos su nombre y la ruta del
 
 En el Pokédex existirá un subdirectorio con el nombre de cada Entrenador, por lo que el proceso deberá leer su archivo de metadata del Pokédex y así conocer su Hoja de Viaje.
 
-La Hoja de Viaje especificará la lista de Mapas que el Entrenador deberá recorrer. Para comenzar su aventura Pokémon, el Entrenador obtendrá la dirección IP y puerto del primer Mapa leyendo el correspondiente _archivo de metadata_. Una vez establecida la conexión, el Entrenador quedará esperando a cada aviso del Mapa de que es su turno de realizar una acción. En este momento, el Entrenador, según el estado en que se encuentre:
+La Hoja de Viaje especificará la lista de Mapas que el Entrenador deberá recorrer. Para comenzar su aventura Pokémon, el Entrenador obtendrá la dirección IP y puerto del primer Mapa leyendo el correspondiente _archivo de metadata_. Una vez establecida la conexión, el Entrenador enviará al Mapa la primera de sus solicitudes de operación. Cada vez que obtenga una respuesta del Mapa, el Entrenador realizará la siguiente solicitud que tenga, hasta cumplir los objetivos del Mapa.
 
-1. **Solicitará** al mapa **la ubicación** de la PokeNest del próximo Pokémon que desea obtener, en caso de aún no conocerla.
+Dependiendo del estado en que se encuentre, el Entrenador enviará alguno de estos pedidos al Mapa:
+
+1. **Solicitará la ubicación** de la PokeNest del próximo Pokémon que desea obtener, en caso de aún no conocerla.
 1. **Avanzará una posición** hacia la siguiente PokeNest[^1], informando el movimiento al Mapa, en caso de aún no haber llegado a ella.
-1. Al llegar a las coordenadas de una PokeNest, **solicitará** al mapa **atrapar un Pokémon**. El Entrenador quedará bloqueado hasta que el Mapa le confirme la captura del Pokémon. En ese momento, el Entrenador evaluará (e informará al Mapa) si debe continuar atrapando Pokémons en este Mapa, o si ya cumplió sus objetivos en el mismo.
+1. Al llegar a las coordenadas de una PokeNest, **solicitará atrapar un Pokémon**.
 
-Tras informarle al Mapa que cumplió sus objetivos, el Entrenador **copiará la medalla del Mapa a su directorio**, se desconectará del mismo, y procederá a repetir toda la operatoria con el siguiente Mapa de su Hoja de Viaje.
+Cuando reciba la confirmación de captura del último Pokemon del Mapa, el Entrenador **copiará la medalla del Mapa a su directorio**, se desconectará del mismo, y procederá a repetir toda la operatoria con el siguiente Mapa de su Hoja de Viaje.
 
 Una vez cumplidos los objetivos del último Mapa de su Hoja de Viaje, el Entrenador se habrá convertido en un _Maestro Pokémon_. El proceso Entrenador informará el logro por pantalla, indicando el Tiempo Total que le tomó toda la aventura, cuánto tiempo pasó bloqueado en las PokeNests, en cuántos Deadlocks estuvo involucrado, y cuántas veces Murió durante la hazaña (ver apartado siguiente).
 

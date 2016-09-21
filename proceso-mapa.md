@@ -12,16 +12,17 @@ El proceso Mapa al ser ejecutado **obtendrá de la línea de comandos su nombre 
 
 ## Hilo Planificador
 
-El hilo Planificador será el encargado de habilitar a los procesos Entrenadores para que puedan actuar dentro del Mapa, ordenándolos **según un algoritmo de planificación de corto plazo Round Robin o SRDF**[^2].
+El hilo Planificador será el encargado de contestar las peticiones de los Entrenadores que actúan dentro del Mapa, ordenándolos **según un algoritmo de planificación de corto plazo Round Robin o SRDF**[^2].
 
 Gestionará una cola de Listos y una cola de Bloqueados. Ante cada modificación de estas colas, el Planificador **deberá informar por archivo de log la modificación realizada, y la lista de los Entrenadores en cada una de las colas**.
 
-Una vez elegido el Entrenador al que le corresponde realizar un movimiento, el hilo le enviará el mensaje de “turno concedido”. El Entrenador podrá responder indicando que desea:
+Mientras haya Entrenadores listos, el Planificador seleccionará a cuál atenderá según el algoritmo de planificación activo. Una vez seleccionado, el Planificador contestará una por una las peticiones que el Entrenador le haga, hasta que este solicite capturar un Pokemon, o hasta que consuma toda la ráfaga de ejecución (si el algoritmo activo fuera RR).
+
+Las posibles operaciones a atender son:
 
 1. **Conocer la ubicación de una PokeNest** - El Mapa contestará al Entrenador las coordenadas en que se encuentra la PokeNest de un Pokémon determinado
 1. **Moverse en alguna dirección** - El Mapa registrará dicho movimiento y contabilizará el uso de una unidad de tiempo al Entrenador
 1. **Capturar un Pokémon** - El Planificador moverá a dicho personaje a la cola de bloqueados. Descartará, si quedara, el quantum de tiempo restante del Entrenador y planificará al siguiente que se encuentre listo.
-1. **Notificar fin de objetivos** - El Planificador informará al Entrenador la ruta en que se encuentra el archivo de la Medalla del Mapa
 
 Eventualmente, el Planificador podrá detectar que un Entrenador se desconectó (cumplió los objetivos del Mapa, o murió). Cuando esto ocurra, deberá liberar todos los Pokémons que éste había capturado y, si correspondiera, otorgarlos a los Entrenadores bloqueados por ellos, desbloqueándolos. Al mismo tiempo, el Planificador eliminará al Entrenador de sus listas de Planificación.
 
