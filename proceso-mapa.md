@@ -12,11 +12,11 @@ El proceso Mapa al ser ejecutado **obtendrá de la línea de comandos su nombre 
 
 ## Hilo Planificador
 
-El hilo Planificador será el encargado de contestar las peticiones de los Entrenadores que actúan dentro del Mapa, ordenándolos **según un algoritmo de planificación de corto plazo Round Robin o SRDF**[^2].
+El hilo Planificador será el encargado de contestar las peticiones de los Entrenadores que actúan dentro del Mapa, ordenándolos **según un algoritmo de planificación de corto plazo Round Robin o SRDF** (ver [Algoritmos de Planificación](#algoritmos-de-planificaci-n)).
 
 Gestionará una cola de Listos y una cola de Bloqueados. Ante cada modificación de estas colas, el Planificador **deberá informar por archivo de log la modificación realizada, y la lista de los Entrenadores en cada una de las colas**.
 
-Mientras haya Entrenadores listos, el Planificador seleccionará a cuál atenderá según el algoritmo de planificación activo. Una vez seleccionado, el Planificador contestará una por una las peticiones que el Entrenador le haga, hasta que este solicite capturar un Pokemon, o hasta que consuma toda la ráfaga de ejecución (si el algoritmo activo fuera RR).
+Mientras haya Entrenadores listos, el Planificador seleccionará a cuál atenderá según el algoritmo de planificación activo. Una vez seleccionado, el Planificador contestará una por una las peticiones que el Entrenador le haga, hasta que este solicite capturar un Pokemon, o hasta que el algoritmo de planificación indique expropiarlo.
 
 Las posibles operaciones a atender son:
 
@@ -27,6 +27,19 @@ Las posibles operaciones a atender son:
 Eventualmente, el Planificador podrá detectar que un Entrenador se desconectó (cumplió los objetivos del Mapa, o murió). Cuando esto ocurra, deberá liberar todos los Pokémons que éste había capturado y, si correspondiera, otorgarlos a los Entrenadores bloqueados por ellos, desbloqueándolos. Al mismo tiempo, el Planificador eliminará al Entrenador de sus listas de Planificación.
 
 El hilo Planificador tendrá un **algoritmo de planificación, valor de quantum[^3] y tiempo de retardo entre turnos**[^4] que será notificado por el Mapa al iniciar.Cuando reciba la señal `SIGUSR2`, el proceso Mapa deberá releer su archivo de Metadata, actualizando estos parámetros durante la ejecución. Junto con los parámetros del Planificador mencionados, el Mapa deberá actualizar, también, el **tiempo de chequeo de interbloqueo**, descrito a continuación.
+
+### Algoritmos de Planificación
+
+El Planificador podrá ir alternando el algoritmo de planificación entre Round Robin (con quantum configurable) y Shortest Remaining Distance First (SRDF) a medida que se relea su archivo de configuración. Es válido esperar a finalizar la ráfaga de ejecución actual antes de efectivizar el cambio de algoritmo.
+
+El SRDF es un algoritmo que sigue dos reglas:
+
+1. Atiende una única operación del primer Entrenador Listo que no conozca su distancia a la próxima PokeNest (ya sea por recién haberse conectado, o por haber recién capturado un Pokemon); o, si no hubiera ninguno,
+1. Atiende todas las operaciones que necesite el Entrenador Listo con menor distancia a su PokeNest destino, hasta que éste se bloquee por solicitar capturar un Pokemon.
+
+Cualquiera de estas dos opciones cuenta como una ráfaga de ejecución, por lo que, para poder volver a ejecutar una siguiente ráfaga, el Entrenador tendrá primero que pasar por el final de la cola de Listos. En otras palabras, si el algoritmo de planificación cambiara de SRDF a RR mientras un Entrenador está consultando la ubicación de su próxima PokeNest al haber sido elegido por la regla 1 del SRDF, ese Entrenador irá al final de la cola de Listos, afectando su orden según Round Robin.
+
+La distancia de un Entrenador a una PokeNest se mide en cantidad de movimientos que debería realizar el Entrenador - es decir, sin contar pasos en diagonal.
 
 ## Detección de deadlock
 
@@ -164,8 +177,6 @@ Nivel=33
 * Los archivos necesarios para ejecutar una simulación serán provistos siempre en su totalidad y sin errores de sintaxis o semántica. Es correcto considerar un error abortivo la carencia o error de alguno de ellos.
 
 ---
-[^2] Shortest Remaining Distance First - Algoritmo no-expropiativo de planificación que define que el próximo personaje a ser planificado es aquel cuya distancia total al siguiente recurso es más corta. (Algoritmo inventado para el trabajo práctico)
-
 [^3] El valor de quantum aplica únicamente para el algoritmo de RR
 
 [^4] Valor en milisegundos que cada planificador de manera independiente deberá esperar entre cada asignación de turno
