@@ -65,13 +65,13 @@ Cada estructura `osadaFile` consta de los siguientes campos:
 | Bloque padre | 2 bytes | Posición del array de la tabla de archivos donde está almacenado el directorio padre o `0xFFFF` si está en el directorio raíz |
 | Tamaño del archivo | 4 bytes | Tamaño total del archivo en bytes |
 | Fecha última modificación | 4 bytes | Timestamp de la última modificación[^6] |
-| Bloque inicial | 4 bytes | Ubicación del primer elemento en la tabla de asignaciones |
+| Bloque inicial | 4 bytes | Ubicación del primer elemento en la tabla de asignaciones, o `0xFFFFFFFF` si no tuviera bloques asignados |
 
 ### Tabla de Asignaciones
 
 La tabla de asignaciones es una estructura que permite identificar los bloques que componen cada archivo.
 
-Es un array de enteros donde cada posición representa un bloque de datos y el valor almacenado en dicha posición indica el próximo bloque.
+Es un array de enteros donde cada posición representa un bloque de datos y el valor almacenado en dicha posición indica el próximo bloque. Para indicar que el bloque es el último del archivo, la Tabla de Asignaciones indicará el valor bandera `0xFFFFFFFF`.
 
 El bloque de inicio de cada archivo es un campo de la estructura `osadaFile` de la tabla de archivos.
 Supongamos que sabemos que un archivo empieza en el bloque 8, vamos a la posición 8 de la tabla de asignaciones y ahí nos dirá el próximo bloque (supongamos el 12) y sucesivamente.
