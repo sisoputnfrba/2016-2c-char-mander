@@ -59,7 +59,6 @@ El archivo de metadata del proceso Entrenador contendrá al menos los siguientes
 * **Hoja de Viaje**: lista de los Mapas que debe completar el Entrenador
 * **Objetivos por Mapa**: por cada Mapa de su Hoja de Viaje, una lista de los Pokémons que deberá obtener de forma ordenada para completarlo
 * **Vidas**: cantidad de vidas restantes
-* **Reintentos realizados**: cantidad de veces que el Entrenador reintentó el juego
 
 #### Restricciones del archivo de Metadata
 * No hay una cantidad definida de Mapas, de objetivos por Mapa o de Pokémons por Mapa y por juego
@@ -83,7 +82,6 @@ obj[PuebloPaleta]=[P,B,G]
 obj[CiudadVerde]=[C,Z,C]
 obj[CiudadPlateada]=[P,M,P,M,S]
 vidas=5
-reintentos=0
 ```
 
 ---
