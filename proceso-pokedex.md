@@ -16,7 +16,8 @@ La implementación deberá permitir que se pueda:
 * Crear archivos
 * Escribir y modificar archivos
 * Borrar archivos
-* Crear directorios y subdirectorios.
+* Crear directorios y subdirectorios
+* Listar el contenido de un directorio
 * Borrar directorios vacíos
 * Renombrar archivos
 Se deberá tener especial cuidado en proteger con semáforos las estructuras administrativas del sistema de archivos ya que se pretende que el proceso pueda recibir solicitudes de manera concurrente de varios procesos Pokedex Cliente.
